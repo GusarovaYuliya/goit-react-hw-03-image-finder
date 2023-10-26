@@ -14,3 +14,5 @@ export const App = () => {
     </div>
   );
 };
+
+// 39546203-6f24950b6bb132fcbecdbd78e - API ключ
