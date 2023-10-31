@@ -42,7 +42,7 @@ export class App extends Component {
       prevState.searchText !== this.state.searchText ||
       prevState.currentPage !== this.state.currentPage
     ) {
-      this.setState({ isLoading: true });
+      this.setState({ isLoading: true, items: [] });
       fetchPixabay(this.state.searchText, this.state.currentPage)
         .then(resp => {
           if (!resp.ok) {
@@ -61,10 +61,11 @@ export class App extends Component {
           } else {
             this.setState({
               error: '',
-              items:
-                prevState.currentPage === this.state.currentPage
-                  ? data.hits
-                  : [...prevState.items, ...data.hits],
+              // items:
+              //   prevState.currentPage === this.state.currentPage
+              //     ? data.hits
+              //     : [...prevState.items, ...data.hits],
+              items:data.hits,
               totalHits: data.totalHits,
               isLoading: false,
             });
@@ -94,7 +95,8 @@ export class App extends Component {
   };
 
   handlerSubmit = value => {
-    this.setState({ searchText: value, currentPage: 1, items: [], error: '' });
+    // this.setState({ searchText: value, currentPage: 1, items: [], error: '' });
+    this.setState({ searchText: value, currentPage: 1, error: '' });
   };
 
   render() {
@@ -124,3 +126,7 @@ export class App extends Component {
     );
   }
 }
+
+
+
+
