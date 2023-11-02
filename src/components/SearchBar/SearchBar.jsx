@@ -22,21 +22,13 @@ class SearchBar extends Component {
       return Notify.failure('This is current request');
     }
 
-    this.setState({
-      lastRequest: this.state.value.toLowerCase().trim(),
-    });
     this.props.onSubmit(this.state.value.toLowerCase().trim());
     this.setState({
       value: '',
+      lastRequest: this.state.value.toLowerCase().trim(),
     });
   };
 
-  //   this.props.onSubmit(this.state.value.toLowerCase().trim());
-  //   this.setState({
-  //     value: '',
-  //     lastRequest: this.state.value.toLowerCase().trim(),
-  //   });
-  // };
   render() {
     return (
       <header className="searchbar">

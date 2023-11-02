@@ -59,16 +59,21 @@ export class App extends Component {
             this.setState({ error: 'Sorry, nothing' });
             throw new Error();
           } else {
-            this.setState({
+            this.setState(prev=>({
               error: '',
+              items: [...prev.items, ...data.hits],
+              totalHits: data.totalHits,
+              isLoading: false,
+
               // items:
               //   prevState.currentPage === this.state.currentPage
               //     ? data.hits
               //     : [...prevState.items, ...data.hits],
-              items:data.hits,
-              totalHits: data.totalHits,
-              isLoading: false,
-            });
+
+              // items:data.hits,
+              // totalHits: data.totalHits,
+              // isLoading: false,
+            }));
           }
         })
         .catch(err => console.log(err))
