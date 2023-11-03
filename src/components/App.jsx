@@ -42,7 +42,7 @@ export class App extends Component {
       prevState.searchText !== this.state.searchText ||
       prevState.currentPage !== this.state.currentPage
     ) {
-      this.setState({ isLoading: true, items: [] });
+      this.setState({ isLoading: true });
       fetchPixabay(this.state.searchText, this.state.currentPage)
         .then(resp => {
           if (!resp.ok) {
@@ -96,12 +96,12 @@ export class App extends Component {
   };
 
   handlerLoadMore = () => {
-    this.setState({ currentPage: this.state.currentPage + 1 });
+    this.setState(prev=>({ currentPage: prev.currentPage + 1 }));
   };
 
   handlerSubmit = value => {
-    // this.setState({ searchText: value, currentPage: 1, items: [], error: '' });
-    this.setState({ searchText: value, currentPage: 1, error: '' });
+    this.setState({ searchText: value, currentPage: 1, items: [], error: '' });
+    // this.setState({ searchText: value, currentPage: 1, error: '' });
   };
 
   render() {
